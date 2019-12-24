@@ -1,0 +1,60 @@
+{
+  "Rice": [
+
+    {
+      "Name": "Sharbati Rice.",
+      "Price": "90",
+      "weight": "200"
+    },
+    {
+      "Name": "Basmati",
+      "Price": "80",
+      "weight": "100"
+    },
+    {
+      "Name": "RH-10 Rice.",
+      "Price": "60",
+      "weight": "90"
+
+    }
+  ],
+  "Wheat": [
+    {
+      "Name": "Durum",
+      "Price": "60",
+      "weight": "150"
+
+    },
+    {
+      "Name": "Spelt",
+      "Price": "60",
+      "weight": "160"
+    },
+    {
+      "Name": "Common wheat",
+      "Price": "20",
+      "weight": "180"
+
+    }
+
+  ],
+  "Pulse": [
+    {
+      "Name": "Pigeon pea",
+      "Price": "60",
+      "weight": "120"
+    },
+    {
+      "Name": "Green Gram ",
+      "Price": "80",
+      "weight": "150"
+    },
+    {
+      "Name": "Chickpeas",
+      "Price": "40",
+      "weight": "200"
+    }
+  ]
+
+}
+
