@@ -1,0 +1,19 @@
+{
+  "TotalStocks": [
+    {
+      "StockName": "Tata",
+      "Numberofshare": 100,
+      "shareprice": 200
+    },
+    {
+      "StockName": "Wipro",
+      "Numberofshare": 100,
+      "shareprice": 200
+    },
+    {
+      "StockName": "Tech Mahindra",
+      "Numberofshare": 100,
+      "shareprice": 200
+    }
+  ]
+}
