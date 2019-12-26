@@ -24,6 +24,7 @@ namespace ObjectOrientedProgramming
                 Console.WriteLine("4. Stock Report");
                 Console.WriteLine("5. Deck Of Card");
                 Console.WriteLine("6. Address Book");
+                Console.WriteLine("6. Cleanique Management");
                 Console.WriteLine();
                 Console.WriteLine("Enter your choice");
                
@@ -55,6 +56,10 @@ namespace ObjectOrientedProgramming
                     case 6:
                         Address_Book.Address_Book _addressBook = new Address_Book.Address_Book();
                         _addressBook.AddressBook();
+                        break;
+                    case 7:
+                        Clinique_Management.CliniqueManagement clinicMngt = new Clinique_Management.CliniqueManagement();
+                        clinicMngt.CleaniqueManagement();
                         break;
                     default:
                         Console.WriteLine("Enter the Wrong Option");

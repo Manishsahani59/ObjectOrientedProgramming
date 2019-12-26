@@ -28,12 +28,20 @@ namespace ObjectOrientedProgramming.Address_Book
                         addAddressBook.AddAddress_book();
                         break;
                     case 2:
+                        updateAddressBook update = new updateAddressBook();
+                        update.AddressBook();
                         break;
                     case 3:
+                        DeleteAddressBook delete = new DeleteAddressBook();
+                        delete.DeleteRecords();
                         break;
                     case 4:
+                        SortByName byName = new SortByName();
+                        byName.SortbyName();
                         break;
                     case 5:
+                        sortByZip byZip = new sortByZip();
+                        byZip.SortByZip();
                         break;
                     default:
                         Console.WriteLine("You Entered The Wrong Option please Try Other");

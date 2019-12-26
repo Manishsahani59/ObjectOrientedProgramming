@@ -1,14 +1,6 @@
 {
   "AddressBook": [
     {
-      "fullName": "Manish",
-      "address": "Mumbai",
-      "city": "Mumbai",
-      "state": "Mahrastra",
-      "_zip": "055226",
-      "_Mobile": "1203654789"
-    },
-    {
       "fullName": "Nitn",
       "address": "jdsfs",
       "city": "sdfsd",
@@ -23,6 +15,14 @@
       "state": "fsdf",
       "_zip": "152525",
       "_Mobile": "2131312321"
+    },
+    {
+      "fullName": "Manish",
+      "address": "Mumbai",
+      "city": "Mumbai",
+      "state": "Mahrastra",
+      "_zip": "055226",
+      "_Mobile": "1203654789"
     }
   ]
 }

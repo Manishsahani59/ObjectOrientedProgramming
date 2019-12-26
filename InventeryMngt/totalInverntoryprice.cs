@@ -7,6 +7,6 @@ namespace ObjectOrientedProgramming
     class totalInverntoryprice
     {
 
-        public List<Price> prices { get; set; }
+        public List<Price> TotalPrice { get; set; }
     }
 }

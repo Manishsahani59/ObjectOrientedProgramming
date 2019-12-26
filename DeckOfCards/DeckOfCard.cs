@@ -10,7 +10,9 @@ namespace ObjectOrientedProgramming
         public void DeckOfcard()
         {
             Random makeRandom = new Random();
-            int k=0,players=8;
+           
+
+            int k=0, NextLine = 8;
             string temp;
             string[] Deckcards = new string[52];
            //string[] suits = { "Clubs", "Diamonds", "Hearts", "Spades"};
@@ -45,19 +47,33 @@ namespace ObjectOrientedProgramming
                 Console.Write(Deckcards[i] +"\t");
                 if (i == 36)
                     break;
-                if (i == players || players==52)
+                if (i == NextLine || NextLine == 52)
                 {
                     int suffle = (int)(makeRandom.Next(0,10));
                     Console.Write("\t"+playerName[suffle]);
                          Console.WriteLine();
                          Console.WriteLine();
-                    players = players + 9;
+                    NextLine = NextLine + 9;
                     k++;
                     
                     
                 }
             }
-          
+
+            for (int i = 0; i < Deckcards.Length; i++)
+            {
+                for (int j = 0; j < Deckcards.Length; j++)
+                {
+                    if (Deckcards[i].CompareTo(Deckcards[j])<0)
+                    {
+                        temp = Deckcards[i];
+                        Deckcards[i] = Deckcards[j];
+                        Deckcards[j] = temp;
+                    }
+                }
+            }
+         
+
         }
 
     }

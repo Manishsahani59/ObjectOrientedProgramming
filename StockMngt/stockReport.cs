@@ -39,13 +39,21 @@ namespace ObjectOrientedProgramming.StockMngt
                 }
                 Console.WriteLine("The Value of Total Stock is \t" + TotalStockPrice);
 
-                string jsonstockDetails = JsonConvert.SerializeObject(TotalStockDetails);
+                Portfolio stockDetails = new Portfolio()
+                {
+                    TotalStocks = TotalStockDetails
+                };
+
+                string jsonstockDetails = JsonConvert.SerializeObject(stockDetails);
                 Console.WriteLine(jsonstockDetails);
                 Portfolio.WriteLine(jsonstockDetails);
                 Portfolio.Flush();
                 Portfolio.Close();
 
             }
+
+
+
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
