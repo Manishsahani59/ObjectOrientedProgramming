@@ -11,13 +11,14 @@ namespace ObjectOrientedProgramming.Address_Book
     {
 
         public static bool flag;
-        public static string fullName, address, city, _zip, _Mobile, _email, state;
+        public static string fullName, address, city, _zip, _Mobile, _email, state,age,specialization;
 
         Regex Name = new Regex(@"^[A-Z][\sa-zA-z]{3,30}$");
         Regex Address = new Regex(@"^[A-za-z0-9 .,()]*$");
         Regex City = new Regex(@"^[A-za-z .]*$");
         Regex Zip = new Regex(@"^[0-9]{6}$");
         Regex Phone = new Regex(@"^\d{10}$");
+        Regex Age = new Regex(@"^\d{2}$");
         Regex Email = new Regex(@"[a-z0-9][-a-z0-9._]+@([-a-z0-9]+.)+[a-z]{2,5}$");
         /// <summary>
         /// This Method is For user Input and Return the User Infrmation to its Caller method
@@ -103,6 +104,40 @@ namespace ObjectOrientedProgramming.Address_Book
             return AddressBookInfromation;
         }
 
+        public string Agevalidation()
+        {
+
+            Console.WriteLine("Enter Your The Doctor Age !!! ");
+            do
+            {
+                age = Console.ReadLine();
+                flag = Age.IsMatch(age);
+                if (flag)
+                    break;
+                Console.WriteLine("Enter the Age Properly...");
+
+            } while (!flag);
+            return age;
+        }
+
+      /// <summary>
+      /// Specilaization  validation
+      /// </summary>
+      /// <returns></returns>
+        public string Specialization()
+        {
+            Console.WriteLine("Enter Your Doctor Specialization !!! ");
+            do
+            {
+                specialization = Console.ReadLine();
+                flag = Name.IsMatch(specialization);
+                if (flag)
+                    break;
+                Console.WriteLine("Enter the Name Specialization properly...");
+
+            } while (!flag);
+            return specialization;
+        }
         /// <summary>
         /// Validation of Name of user
         /// </summary>
