@@ -66,8 +66,8 @@ namespace ObjectOrientedProgramming
                             _addressBook.AddressBook();
                             break;
                         case 8:
-                            Clinique_Management.Doctor clinicMngt = new Clinique_Management.Doctor();
-                            clinicMngt.Doctors();
+                            Clinique_Management.Index clinicMngt = new Clinique_Management.Index();
+                            clinicMngt.CleniqueIndex();
                             break;
                         default:
                             Console.WriteLine("Enter the Wrong Option");

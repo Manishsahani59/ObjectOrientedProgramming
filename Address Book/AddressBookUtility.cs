@@ -11,7 +11,7 @@ namespace ObjectOrientedProgramming.Address_Book
     {
 
         public static bool flag;
-        public static string fullName, address, city, _zip, _Mobile, _email, state,age,specialization;
+        public static string fullName, address, city, _zip, _Mobile, _email, state,age,specialization,Avaliable;
 
         Regex Name = new Regex(@"^[A-Z][\sa-zA-z]{3,30}$");
         Regex Address = new Regex(@"^[A-za-z0-9 .,()]*$");
@@ -20,6 +20,7 @@ namespace ObjectOrientedProgramming.Address_Book
         Regex Phone = new Regex(@"^\d{10}$");
         Regex Age = new Regex(@"^\d{2}$");
         Regex Email = new Regex(@"[a-z0-9][-a-z0-9._]+@([-a-z0-9]+.)+[a-z]{2,5}$");
+        Regex Avaliablity = new Regex(@"[AaPp][mM]|^(both)");
         /// <summary>
         /// This Method is For user Input and Return the User Infrmation to its Caller method
         /// </summary>
@@ -133,7 +134,7 @@ namespace ObjectOrientedProgramming.Address_Book
                 flag = Name.IsMatch(specialization);
                 if (flag)
                     break;
-                Console.WriteLine("Enter the Name Specialization properly...");
+                Console.WriteLine("Enter the Specialization properly...");
 
             } while (!flag);
             return specialization;
@@ -235,6 +236,21 @@ namespace ObjectOrientedProgramming.Address_Book
                 Console.WriteLine("Please Enter the Phone Number Properly...");
             } while (!flag);
             return _Mobile;
+        }
+
+        public string ValidationAvaliablity()
+        {
+            Console.WriteLine("Enter The Doctor Avaliablity (like AM am PM pm or both)");
+            do
+            {
+                Avaliable = Console.ReadLine();
+                flag = Avaliablity.IsMatch(Avaliable);
+                if (flag)
+                    break;
+                Console.WriteLine("Enter the Avaliablity properly...");
+
+            } while (!flag);
+            return Avaliable;
         }
 
     }

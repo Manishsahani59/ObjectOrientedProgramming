@@ -23,6 +23,8 @@ namespace ObjectOrientedProgramming.Clinique_Management
             DoctorsInformation.MobileNo = phoneNo;
             string Age = validation.Agevalidation();
             DoctorsInformation.Age = Age;
+            string Avaliable = validation.ValidationAvaliablity();
+            DoctorsInformation.Availability = Avaliable;
             return DoctorsInformation;
 
 

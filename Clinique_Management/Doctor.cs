@@ -23,6 +23,10 @@ namespace ObjectOrientedProgramming.Clinique_Management
                 Console.WriteLine("Enter The Your Choice");
                 Console.WriteLine("1 . Enter the Doctors Infromation");
                 Console.WriteLine("2 . Doctors By Name ");
+                Console.WriteLine("3 . Doctors By Id ");
+                Console.WriteLine("4 . Doctors By Avaliablity ");
+                Console.WriteLine("5 . Doctors By Specialization ");
+              
                 do
                 {
                    flag = int.TryParse(Console.ReadLine(), out choice);
@@ -49,12 +53,27 @@ namespace ObjectOrientedProgramming.Clinique_Management
                         {
                             Doctors = Doctors
                         };
+
+
+
                         string CliniqueDoctors = JsonConvert.SerializeObject(CliniqueManagement);
                         File.WriteAllText(path, CliniqueDoctors);
                         break;
                     case 2:
                         DoctorsByName _DoctorbyName = new DoctorsByName();
                         _DoctorbyName.DoctorbyName();
+                        break;
+                    case 3:
+                      implmentationofSerachID _DoctorbyId = new implmentationofSerachID();
+                     _DoctorbyId.serachById();
+                        break;     
+                    case 4:
+                        ImplemntaionofSearchByAvaliablity _DoctorbyAvaliablity = new ImplemntaionofSearchByAvaliablity();
+                        _DoctorbyAvaliablity.serachByAvaliablity();
+                        break;     
+                    case 5:
+                        ImplemntaionofSearchBySpecilaization _DoctorBySpecialization = new ImplemntaionofSearchBySpecilaization();
+                        _DoctorBySpecialization.serachBySepcilaization();
                         break;
 
                     default:
