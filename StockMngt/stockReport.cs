@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 using System.IO;
+using ConsoleTables;
 
 namespace ObjectOrientedProgramming.StockMngt
 {
@@ -12,48 +13,66 @@ namespace ObjectOrientedProgramming.StockMngt
         {
             try
             {
-                StreamWriter Portfolio = new StreamWriter(@"C:\Users\User\source\repos\ObjectOrientedProgramming\ObjectOrientedProgramming\StockMngt\Portfolio.json");
+               int serial = 1;
+                char input;
+                bool flag;
+               string Portfolio = @"C:\Users\User\source\repos\ObjectOrientedProgramming\ObjectOrientedProgramming\StockMngt\JsonFiles\Portfolio.json";
+               string Stocks=File.ReadAllText(Portfolio);
+               var jsonStcoksdata= JsonConvert.DeserializeObject<Portfolio>(Stocks);
                 int TotalStockPrice = 0;
-                List<getStockInfromation> TotalStockDetails = new List<getStockInfromation>();
-                Console.WriteLine("****************************\tEnter The Number of Stock\t****************************");
-                int size = Utility.switchinputvalidation();
-                for (int i = 0; i < size; i++)
+                List<getStockInfromation> TotalStockDetails;
+                getStockInfromation stocks;
+                Console.WriteLine("Do You Want To Add The Stocks Y/N ?");
+                    do
+                    {
+                        flag = char.TryParse(Console.ReadLine(), out input);
+                        if (flag)
+                            break;
+                        Console.WriteLine("Enter the Proper input");
+                    } while (!flag);
+                if (input.Equals('Y') || input.Equals('y'))
                 {
-                    Console.WriteLine(" **************************** Enter The stock Details of  " + (i + 1) + " ****************************");
-                    getStockInfromation stocks = new getStockInfromation();
-                    Console.WriteLine("Enter the Stock Name");
-                    stocks.StockName = Console.ReadLine();
-                    Console.WriteLine("Enter the Stock Number of Share");
-                    stocks.Numberofshare = Utility.switchinputvalidation();
-                    Console.WriteLine("Enter the Stock Price");
-                    stocks.shareprice = Utility.switchinputvalidation();
-                    TotalStockDetails.Add(stocks);
+                    Console.WriteLine("___________________________\tEnter The Number of Stock\t___________________________");
+                    int size = Utility.switchinputvalidation();
+                    for (int i = 0; i < size; i++)
+                    {
+                        Console.WriteLine("_____________________________ Enter The stock Details of  " + (i + 1) + " __________________________________");
+                        if (Portfolio == "")
+                        {
+                            TotalStockDetails = new List<getStockInfromation>();
+                            stocks = CommercialDataProcessingUtility.AddStocksInformation();
+                            TotalStockDetails.Add(stocks);
+                        }
+                        else
+                        {
+                            TotalStockDetails = jsonStcoksdata.TotalStocks;
+                            stocks = CommercialDataProcessingUtility.AddStocksInformation();
+                            TotalStockDetails.Add(stocks);
+                        }
+
+                    }
+
+                }
+
+                Console.WriteLine("The Total Stocks Is ---");
+                var table = new ConsoleTable("seq", "StockName", "NumberofShare", "SharePrice", "TotalValueofTheStock");
+
+
+                foreach (var stockData in jsonStcoksdata.TotalStocks)
+                {
+                    TotalStockPrice = TotalStockPrice + stockData.Numberofshare * stockData.shareprice;
+                    table.AddRow(serial,stockData.StockName,stockData.Numberofshare,stockData.shareprice,stockData.Numberofshare * stockData.shareprice);
                    
+
+                    serial++;
                 }
-                Console.WriteLine("----------------------\tThe Individual Stock Infromation is\t----------------------");
-                for (int i = 0; i < TotalStockDetails.Count; i++)
-                {
-                    Console.WriteLine(" The Value of  " + TotalStockDetails[i].StockName + " is\t " + TotalStockDetails[i].Numberofshare * TotalStockDetails[i].shareprice);
-
-                    TotalStockPrice = TotalStockPrice + TotalStockDetails[i].Numberofshare * TotalStockDetails[i].shareprice;
-                }
-                Console.WriteLine("The Value of Total Stock is \t" + TotalStockPrice);
-
-                Portfolio stockDetails = new Portfolio()
-                {
-                    TotalStocks = TotalStockDetails
-                };
-
-                string jsonstockDetails = JsonConvert.SerializeObject(stockDetails);
-                Console.WriteLine(jsonstockDetails);
-                Portfolio.WriteLine(jsonstockDetails);
-                Portfolio.Flush();
-                Portfolio.Close();
-
+                table.Write();
+                Console.WriteLine();
+                Console.Write("Value Of Total Stocks\t ");
+                Console.WriteLine(TotalStockPrice);
+                string TotalStocks=  JsonConvert.SerializeObject(jsonStcoksdata);
+                File.WriteAllText(Portfolio,TotalStocks);
             }
-
-
-
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);

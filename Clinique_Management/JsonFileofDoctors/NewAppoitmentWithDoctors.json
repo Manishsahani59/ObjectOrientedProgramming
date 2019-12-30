@@ -1,0 +1,22 @@
+{
+  "Appointment": [
+    {
+      "DoctorName": "Manish",
+      "Avaliablity": "Pm",
+      "specialization": "Eye Specilist",
+      "patientId": 1053259,
+      "PatientName": "Demo",
+      "patientAge": "26",
+      "PatientMobileNumber": "9912336699"
+    },
+    {
+      "DoctorName": "Demo",
+      "Avaliablity": "Pm",
+      "specialization": "Demo ",
+      "patientId": 5073308,
+      "PatientName": "Demo",
+      "patientAge": "12",
+      "PatientMobileNumber": "1230654789"
+    }
+  ]
+}

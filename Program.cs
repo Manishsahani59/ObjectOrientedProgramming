@@ -14,10 +14,8 @@ namespace ObjectOrientedProgramming
             char yes_no;
             try
             {
-
                 do
                 {
-
                     Console.WriteLine();
                     Console.WriteLine("*******************  Object Oriented Programming *******************");
                     Console.WriteLine();
@@ -29,9 +27,10 @@ namespace ObjectOrientedProgramming
                     Console.WriteLine("6. Deck Of Card using Queue");
                     Console.WriteLine("7. Address Book");
                     Console.WriteLine("8. Cleanique Management");
+                    Console.WriteLine("9.  Commercial data processing");
+                    Console.WriteLine("______________________________________________________________");
                     Console.WriteLine();
-                    Console.WriteLine("Enter your choice");
-
+                    Console.WriteLine("Enter your choice ?........");
                     input = Utility.switchinputvalidation();
                     switch (input)
                     {
@@ -69,34 +68,22 @@ namespace ObjectOrientedProgramming
                             Clinique_Management.Index clinicMngt = new Clinique_Management.Index();
                             clinicMngt.CleniqueIndex();
                             break;
+                        case 9:
+                            StockMngt.CommercialDataProcessingIndex index = new StockMngt.CommercialDataProcessingIndex();
+                            index.Index();
+                            break;
                         default:
                             Console.WriteLine("Enter the Wrong Option");
                             break;
                     }
-
-
-
-
-                    Console.WriteLine("do You want to continue Y/N");
+                    Console.WriteLine("do You want to continue Y/N ?");
                     yes_no = Utility.Exitinputvalidation();
                 } while (yes_no.Equals('Y') || yes_no.Equals('y'));
-
-
-
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-           
-
-
-
-
-
-
-        
         }
     }
 }

@@ -13,9 +13,9 @@ namespace ObjectOrientedProgramming.Clinique_Management
                 bool flag;
                 int choice;
                 Console.WriteLine("Choose To Manage the List of");
-                Console.WriteLine(" 1   Patients");
-                Console.WriteLine(" 2  Docrtors");
-                Console.WriteLine("Enter your Choice");
+                Console.WriteLine(" 1  Docrtors");
+                Console.WriteLine(" 2  Patients");
+                Console.WriteLine("Enter your Choice ?");
                 do
                 {
                  flag = int.TryParse(Console.ReadLine(), out choice);

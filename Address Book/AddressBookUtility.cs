@@ -108,7 +108,7 @@ namespace ObjectOrientedProgramming.Address_Book
         public string Agevalidation()
         {
 
-            Console.WriteLine("Enter Your The Doctor Age !!! ");
+            Console.WriteLine("Enter Your The Age !!! ");
             do
             {
                 age = Console.ReadLine();
@@ -157,9 +157,24 @@ namespace ObjectOrientedProgramming.Address_Book
             return fullName;
         }
         /// <summary>
-        /// User Address Validation
-        /// </summary>
-         public string Addressvalidation()
+       /// Any User Name FullName Validation
+       /// </summary>
+        public string CustomName()
+        {
+           
+            do
+            {
+                fullName = Console.ReadLine();
+                flag = Name.IsMatch(fullName);
+                if (flag)
+                    break;
+                Console.WriteLine("Enter the Name Properly...");
+
+            } while (!flag);
+            return fullName;
+        }
+
+        public string Addressvalidation()
         {
             Console.WriteLine("Enter Your Address !!!");
             do
@@ -224,6 +239,7 @@ namespace ObjectOrientedProgramming.Address_Book
             return _zip;
         }
 
+       
         public string phoneNumber()
         {
             Console.WriteLine("Enter the Phone Number !!!");
@@ -238,7 +254,7 @@ namespace ObjectOrientedProgramming.Address_Book
             return _Mobile;
         }
 
-        public string ValidationAvaliablity()
+        public  string ValidationAvaliablity()
         {
             Console.WriteLine("Enter The Doctor Avaliablity (like AM am PM pm or both)");
             do
