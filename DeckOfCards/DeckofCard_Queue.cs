@@ -9,9 +9,10 @@ namespace ObjectOrientedProgramming.DeckOfCards
     {
         public void DeckOfCardqueue()
         {
-            int k = 0, index, counter = 0 ;
+            try { 
+            int k = 0, index, counter = 0;
             string temp;
-            int sum=0;
+            int sum = 0;
             string[] Deckcards = new string[52];
             Queue Player = new Queue();
             Queue Player1 = new Queue();
@@ -19,17 +20,10 @@ namespace ObjectOrientedProgramming.DeckOfCards
             Queue Player3 = new Queue();
             Queue Player4 = new Queue();
             Queue playingCards = new Queue();
-        
-
-
             Player.Enequeue("player1");
             Player.Enequeue("player2");
             Player.Enequeue("player3");
             Player.Enequeue("player4");
-
-           
-           // Player.Display();
-
             string[] suits = { "C", "D", "H", "S" };
             string[] cards = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
             for (int i = 0; i < suits.Length; i++)
@@ -41,23 +35,19 @@ namespace ObjectOrientedProgramming.DeckOfCards
                     k++;
                 }
             }
-
             Random randomizeCard = new Random();
             for (int i = 0; i < Deckcards.Length; i++)
             {
-              index=randomizeCard.Next(52 - i);
+                index = randomizeCard.Next(52 - i);
                 temp = Deckcards[index];
                 Deckcards[index] = Deckcards[i];
                 Deckcards[i] = temp;
-           
             }
-
             for (int i = 0; i < Deckcards.Length; i++)
             {
                 playingCards.Enequeue(Deckcards[i]);
-               
-            }
 
+            }
             while (!playingCards.isEmpty())
             {
                 while (counter <= 9)
@@ -97,8 +87,8 @@ namespace ObjectOrientedProgramming.DeckOfCards
                         Console.WriteLine();
                     }
                 }
-                    while (counter >= 19 && counter <= 28)
-                    {
+                while (counter >= 19 && counter <= 28)
+                {
                     string data = playingCards.Dequeue();
                     Player3.Enequeue(data);
                     if (counter == 28)
@@ -135,16 +125,12 @@ namespace ObjectOrientedProgramming.DeckOfCards
                     }
                     counter++;
                 }
-                  string data1 = playingCards.Dequeue();
-              
+                string data1 = playingCards.Dequeue();
             }
-
-           
-          
-           
-          
-
-        }
-        
+        } catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+}
     }
 }

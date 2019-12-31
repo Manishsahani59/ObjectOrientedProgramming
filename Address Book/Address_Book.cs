@@ -10,7 +10,6 @@ namespace ObjectOrientedProgramming.Address_Book
         {
             char input;
             bool flag;
-
             do
             {
                 Console.WriteLine("**********************\t Address Book\t**********************");
@@ -20,7 +19,6 @@ namespace ObjectOrientedProgramming.Address_Book
                 Console.WriteLine(" 4 Sort By Name address book information");
                 Console.WriteLine(" 5 Sort By Zip address book information");
                 int choice = Utility.switchinputvalidation();
-
                 switch (choice)
                 {
                     case 1:
@@ -46,7 +44,6 @@ namespace ObjectOrientedProgramming.Address_Book
                     default:
                         Console.WriteLine("You Entered The Wrong Option please Try Other");
                         break;
-
                 }
                 Console.WriteLine("Do You Want to Continue Y/N");
                 do
@@ -57,7 +54,6 @@ namespace ObjectOrientedProgramming.Address_Book
                     Console.WriteLine("Enter The valid Character");
                 } while (!flag);
             } while (input.Equals('Y') || input.Equals('y'));
-           
         }
     }
 }

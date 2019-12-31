@@ -14,8 +14,6 @@ namespace ObjectOrientedProgramming
             string MobileNo;
             bool flag;
             string todayDate = DateTime.Today.ToString("dd/MM/yyyy");
-            Console.WriteLine(todayDate);
-
             try
             {
                 Regex mobileNumber = new Regex(@"^?\d{10}$");
@@ -23,8 +21,6 @@ namespace ObjectOrientedProgramming
                 Regex FullName = new Regex(@"^[A-Z][\sa-zA-Z ]{3,30}$");
                 string samplestring = File.ReadAllText(@"C:\Users\User\Desktop\RegularExpression.txt");
                 Console.WriteLine("The Sample String Is--  ");
-                Console.WriteLine(samplestring);
-              
                 Console.WriteLine(samplestring);
                 Console.WriteLine("The File Read Successfully .............");
                 Console.WriteLine("Enter Your Frist Name");
@@ -43,7 +39,6 @@ namespace ObjectOrientedProgramming
                     break;
                     Console.WriteLine("Please Enter the Valid Name");
                 } while (!flag);
-               
                 Console.WriteLine("Enter the Mobile Number");
                 do
                 {
@@ -67,19 +62,6 @@ namespace ObjectOrientedProgramming
             {
                 Console.WriteLine(e.Message);
             }
-
-          
-
-
-
-
-
-
-
-            //   Console.WriteLine(dateTime.ToString("dd/MM/yyyy"));
-
-
         }
-
     }
 }

@@ -17,7 +17,6 @@ namespace ObjectOrientedProgramming.Address_Book
             var jsonAddressBookData = JsonConvert.DeserializeObject<AddressBookListinfo>(jsonAddressBookRecords);
             List<GetAddressBookInfo> AddressBook;
             GetAddressBookInfo AddressBookInfromation;
-            
             try
             {
                 if (jsonAddressBookRecords == "")
@@ -37,21 +36,11 @@ namespace ObjectOrientedProgramming.Address_Book
                 };
                 string jsondata = JsonConvert.SerializeObject(addresbook);
                 File.WriteAllText(FilePath, jsondata);
-
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-          
-            
-            
-      
-      
-        
-
-
         }
     }
 }

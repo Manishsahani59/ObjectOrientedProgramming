@@ -27,7 +27,7 @@ namespace ObjectOrientedProgramming
                     Console.WriteLine("6. Deck Of Card using Queue");
                     Console.WriteLine("7. Address Book");
                     Console.WriteLine("8. Cleanique Management");
-                    Console.WriteLine("9.  Commercial data processing");
+                    Console.WriteLine("9. Commercial data processing");
                     Console.WriteLine("______________________________________________________________");
                     Console.WriteLine();
                     Console.WriteLine("Enter your choice ?........");

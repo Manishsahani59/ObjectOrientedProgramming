@@ -11,7 +11,6 @@ namespace ObjectOrientedProgramming.Address_Book
         AddressBookUtility utility = new AddressBookUtility();
         public void AddressBook()
         {
-
             try
             {
                 int serial = 1;
@@ -68,15 +67,12 @@ namespace ObjectOrientedProgramming.Address_Book
                         default:
                             Console.WriteLine("There is No Other Avaliable Option");
                             break;
-
                     }
-
                     Console.WriteLine("Your Information Have been Successfully updated ....... Your Updated List is Given Below ");
                     Console.WriteLine("1\t\t" + jsonData.AddressBook[choice].fullName + "\t\t" + jsonData.AddressBook[choice].address + "\t\t\t" + jsonData.AddressBook[choice].city + "\t\t" + jsonData.AddressBook[choice].state + "\t\t" + jsonData.AddressBook[choice]._zip + "\t\t" + jsonData.AddressBook[choice]._Mobile + "\t\t");
                     Console.WriteLine("Your File Successfully updated....................");
                     string updateFile = JsonConvert.SerializeObject(jsonData);
                     File.WriteAllText(FilePath, updateFile);
-
                     Console.WriteLine("Do You Want to Continue Y/N ?.....");
                     do
                     {
@@ -92,7 +88,6 @@ namespace ObjectOrientedProgramming.Address_Book
             {
                 Console.WriteLine(e.Message);
             }
-           
         }
     }
 }

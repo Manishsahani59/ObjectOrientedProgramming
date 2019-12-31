@@ -10,7 +10,6 @@ namespace ObjectOrientedProgramming.Address_Book
     {
         public void SortbyName()
         {
-
             try
             {
                 string TempFullName;
@@ -24,7 +23,6 @@ namespace ObjectOrientedProgramming.Address_Book
                 string FileWritePath = @"C:\Users\User\source\repos\ObjectOrientedProgramming\ObjectOrientedProgramming\Address Book\AddressBookSortByName.json";
                 string AddressBookInformation = File.ReadAllText(FilePath);
                 var jsonData = JsonConvert.DeserializeObject<AddressBookListinfo>(AddressBookInformation);
-
                 for (int i = 0; i < jsonData.AddressBook.Count; i++)
                 {
                     for (int j = 0; j < jsonData.AddressBook.Count; j++)
@@ -54,7 +52,6 @@ namespace ObjectOrientedProgramming.Address_Book
                         }
                     }
                 }
-
                 string sortedAddressBookList = JsonConvert.SerializeObject(jsonData);
                 File.WriteAllText(FileWritePath, sortedAddressBookList);
                 Console.WriteLine("You AddressBook List Succssfully sorted By Zip");
@@ -66,15 +63,11 @@ namespace ObjectOrientedProgramming.Address_Book
                     Console.WriteLine(serial + "\t\t" + IndividualData.fullName + "\t\t" + IndividualData.address + "\t\t" + IndividualData.city + "\t\t" + IndividualData.state + "\t\t" + IndividualData._zip + "\t\t" + IndividualData._Mobile);
                     serial++;
                 }
-
-
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-
         }
     }
 }

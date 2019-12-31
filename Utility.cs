@@ -8,7 +8,6 @@ namespace ObjectOrientedProgramming
 {
     class Utility
     {
-
         public static void Validation(string userName,string Mobilenumber)
         {
 
@@ -16,7 +15,6 @@ namespace ObjectOrientedProgramming
             Regex mobileNumbner = new Regex(@"^[0-9]{10}$");
             if (Name.IsMatch(userName))
             {
-                // Console.WriteLine("UserName is in Correct Format");
                 if (mobileNumbner.IsMatch(Mobilenumber))
                 {
                     Console.WriteLine("Ok");
@@ -25,14 +23,11 @@ namespace ObjectOrientedProgramming
                 {
                     //Console.WriteLine("it contain only nummeric value up to 10 digit only");
                 }
-
             }
             else
             {
                 Console.WriteLine("First And Second Name must be captial, do not contain any special character and numeric value");
             }
-        
-
         }
        
         /// <summary>

@@ -209,7 +209,6 @@ namespace ObjectOrientedProgramming
                         switch (PulseChoice)
                         {
                             case 1:
-
                                 do
                                 {
                                     Console.WriteLine("Serial No\t" + "Name\t\t\t" + "Price\t\t\t" + "Weight");
@@ -247,7 +246,6 @@ namespace ObjectOrientedProgramming
                                 } while (input.Equals('Y') || input.Equals('y'));
                                 break;
                             case 2:
-
                                 do
                                 {
                                     Console.WriteLine("Serial No\t" + "Name\t\t\t" + "Price\t\t\t" + "Weight");
@@ -325,7 +323,6 @@ namespace ObjectOrientedProgramming
                                 Console.WriteLine("I have Not Avaliable More Products");
                                 break;
                         }
-
                         break;
                     case 3:
                         int _WheatselectSerail = 1;
@@ -338,8 +335,6 @@ namespace ObjectOrientedProgramming
                             _WheatselectSerail++;
                             _totalwheat = _totalwheat + products.price * products.weight;
                         }
-
-
                         Console.WriteLine("Select The Option Which Wheat You Want to Buy ?");
                         Console.WriteLine("1  " + Items.Wheat[0].Name);
                         Console.WriteLine("2  " + Items.Wheat[1].Name);
@@ -387,7 +382,6 @@ namespace ObjectOrientedProgramming
                                 } while (input.Equals('Y') || input.Equals('y'));
                                 break;
                             case 2:
-
                                 do
                                 {
                                     Console.WriteLine("Serial No\t" + "Name\t\t\t" + "Price\t\t\t" + "Weight");
@@ -465,21 +459,16 @@ namespace ObjectOrientedProgramming
                                 Console.WriteLine("I have Not Avaliable More Products");
                                 break;
                         }
-
                         break;
                     default:
                         Console.WriteLine("I have Not Avbaliable");
                         break;
                 }
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-
-
         }
-
     }
 }
