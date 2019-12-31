@@ -1,1 +1,74 @@
-{"Buysahres":[{"userName":"Renu","StockName":"CMC ","numberofshare":1.0,"shareprice":10000,"dateAndTime":"12/31/2019 9:30:11 AM"},{"userName":"Manish","StockName":"Tech Mahindra","numberofshare":10.0,"shareprice":10000,"dateAndTime":"12/31/2019 9:31:56 AM"},{"userName":"Manish","StockName":"Infosys","numberofshare":2.0,"shareprice":10000,"dateAndTime":"12/31/2019 9:58:15 AM"}]}
+{
+  "Buysahres": [
+    {
+      "userName": "Manish",
+      "StockName": "CMC ",
+      "numberofshare": 1.0,
+      "shareprice": 10000,
+      "dateAndTime": "12/31/2019 9:30:11 AM"
+    },
+    {
+      "userName": "Manish",
+      "StockName": "Tech Mahindra",
+      "numberofshare": 10.0,
+      "shareprice": 10000,
+      "dateAndTime": "12/31/2019 9:31:56 AM"
+    },
+    {
+      "userName": "Manish",
+      "StockName": "Infosys",
+      "numberofshare": 2.0,
+      "shareprice": 10000,
+      "dateAndTime": "12/31/2019 9:58:15 AM"
+    },
+    {
+      "userName": "Manish",
+      "StockName": "CMC ",
+      "numberofshare": 0.0,
+      "shareprice": 5000,
+      "dateAndTime": "12/31/2019 3:09:41 PM"
+    },
+    {
+      "userName": "Manish",
+      "StockName": "CMC ",
+      "numberofshare": 1.0,
+      "shareprice": 10000,
+      "dateAndTime": "12/31/2019 3:10:27 PM"
+    },
+    {
+      "userName": "Manish",
+      "StockName": "Jio",
+      "numberofshare": 0.0,
+      "shareprice": 1000,
+      "dateAndTime": "12/31/2019 3:26:26 PM"
+    },
+    {
+      "userName": "Manish",
+      "StockName": "Wipro",
+      "numberofshare": 0.0,
+      "shareprice": 1000,
+      "dateAndTime": "12/31/2019 3:30:23 PM"
+    },
+    {
+      "userName": "Manish",
+      "StockName": "Wipro",
+      "numberofshare": 0.0,
+      "shareprice": 1000,
+      "dateAndTime": "12/31/2019 3:32:03 PM"
+    },
+    {
+      "userName": "Manish",
+      "StockName": "Wipro",
+      "numberofshare": 0.0,
+      "shareprice": 1000,
+      "dateAndTime": "12/31/2019 3:33:13 PM"
+    },
+    {
+      "userName": "Manish",
+      "StockName": "Wipro",
+      "numberofshare": 0.0,
+      "shareprice": 2000,
+      "dateAndTime": "12/31/2019 3:34:51 PM"
+    }
+  ]
+}

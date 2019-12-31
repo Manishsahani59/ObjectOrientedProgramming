@@ -22,7 +22,7 @@ namespace ObjectOrientedProgramming.StockMngt
                 int TotalStockPrice = 0;
                 List<getStockInfromation> TotalStockDetails;
                 getStockInfromation stocks;
-                Console.WriteLine("Do You Want To Add The Stocks Y/N ?");
+                Console.WriteLine("Do You Want To Add The Stocks Press Y/y and For View The List of Stocks press S/s else other ?");
                     do
                     {
                         flag = char.TryParse(Console.ReadLine(), out input);
@@ -53,25 +53,28 @@ namespace ObjectOrientedProgramming.StockMngt
                     }
 
                 }
-
-                Console.WriteLine("The Total Stocks Is ---");
-                var table = new ConsoleTable("seq", "StockName", "NumberofShare", "SharePrice", "TotalValueofTheStock");
-
-
-                foreach (var stockData in jsonStcoksdata.TotalStocks)
+                if (input.Equals('S') || input.Equals('s'))
                 {
-                    TotalStockPrice = TotalStockPrice + stockData.Numberofshare * stockData.shareprice;
-                    table.AddRow(serial,stockData.StockName,stockData.Numberofshare,stockData.shareprice,stockData.Numberofshare * stockData.shareprice);
-                   
+                    Console.WriteLine("The Total Stocks Is ---");
+                    var table = new ConsoleTable("seq", "StockName", "NumberofShare", "SharePrice", "TotalValueofTheStock");
 
-                    serial++;
+
+                    foreach (var stockData in jsonStcoksdata.TotalStocks)
+                    {
+                        TotalStockPrice = TotalStockPrice + stockData.Numberofshare * stockData.shareprice;
+                        table.AddRow(serial, stockData.StockName, stockData.Numberofshare, stockData.shareprice, stockData.Numberofshare * stockData.shareprice);
+
+
+                        serial++;
+                    }
+                    table.Write();
+                    Console.WriteLine();
+                    Console.Write("Value Of Total Stocks\t ");
+                    Console.WriteLine(TotalStockPrice);
+                    string TotalStocks = JsonConvert.SerializeObject(jsonStcoksdata);
+                    File.WriteAllText(Portfolio, TotalStocks);
                 }
-                table.Write();
-                Console.WriteLine();
-                Console.Write("Value Of Total Stocks\t ");
-                Console.WriteLine(TotalStockPrice);
-                string TotalStocks=  JsonConvert.SerializeObject(jsonStcoksdata);
-                File.WriteAllText(Portfolio,TotalStocks);
+              
             }
             catch (Exception e)
             {

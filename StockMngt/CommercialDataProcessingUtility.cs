@@ -107,7 +107,9 @@ namespace ObjectOrientedProgramming.StockMngt
 
             }
         }
-
+        /// <summary>
+        /// Validation of Login User Method
+        /// </summary>
         public void Login()
         {
             bool flag = false;
@@ -131,6 +133,7 @@ namespace ObjectOrientedProgramming.StockMngt
                         Console.WriteLine("2 Sell Share");
                         Console.WriteLine("3 Total value");
                         Console.WriteLine("4 Print Report");
+                    
                         Console.WriteLine("_____________________________ ************************************* ____________________________");
 
                         Console.WriteLine("Enter Your Choice");
@@ -146,8 +149,13 @@ namespace ObjectOrientedProgramming.StockMngt
                                 Shell.shellShare();
                                 break;
                             case 3:
+                                CommercialDataProcessingUtility Totalvalue = new CommercialDataProcessingUtility();
+                                Totalvalue.TotalAmount();
+                             
                                 break;
                             case 4:
+                                CommercialDataProcessingUtility PrintReport = new CommercialDataProcessingUtility();
+                                PrintReport.PrintReport();
                                 break;
                             default:
                                 Console.WriteLine("You Enterd The Wrong Option");
@@ -180,16 +188,16 @@ namespace ObjectOrientedProgramming.StockMngt
         {
             try
             {
+                bool flag = false;
                 int serial = 1;
                 string buysharePath = @"C:\Users\User\source\repos\ObjectOrientedProgramming\ObjectOrientedProgramming\StockMngt\JsonFiles\BuyShares.json";
                 string PortfolioPath = @"C:\Users\User\source\repos\ObjectOrientedProgramming\ObjectOrientedProgramming\StockMngt\JsonFiles\Portfolio.json";
                 string PortfolioData = File.ReadAllText(PortfolioPath);
+
                 var jsonAccountHolder = JsonConvert.DeserializeObject<Portfolio>(PortfolioData);
                 Console.WriteLine("You have Avaliable Stocks ...");
                 Console.WriteLine();
                 var table = new ConsoleTable("seq", "StockName", "NumberofShare", "SharePrice", "TotalValueofTheStock");
-
-
                 foreach (var stockData in jsonAccountHolder.TotalStocks)
                 {
                     table.AddRow(serial, stockData.StockName, stockData.Numberofshare, stockData.shareprice, stockData.Numberofshare * stockData.shareprice);
@@ -200,7 +208,7 @@ namespace ObjectOrientedProgramming.StockMngt
                 Console.WriteLine("Enter the StockName to Buy the Share ");
                 string Choice = Console.ReadLine();
                 var table1 = new ConsoleTable("seq", "StockName", "NumberofShare", "SharePrice", "TotalValueofTheStock");
-                Console.WriteLine("You Selected The " + Choice);
+               
                 foreach (var stockData in jsonAccountHolder.TotalStocks)
                 {
                     if (stockData.StockName.Contains(Choice))
@@ -212,15 +220,20 @@ namespace ObjectOrientedProgramming.StockMngt
                         Console.WriteLine("Enter the how Much Amout of Share You want to Buy");
                         int AmountofShare = Utility.switchinputvalidation();
                         string StockName = stockData.StockName;
-                        float NumberofShare = AmountofShare / stockData.shareprice;
-
+                        int NumberofShare = AmountofShare / stockData.shareprice;
+                        flag = true;
                         Console.WriteLine("Amount " + AmountofShare);
                         Console.WriteLine("The Number of Share " + NumberofShare);
                         Console.WriteLine("The Stock Name" + StockName);
                         Console.WriteLine("User " +UserName);
                         DateTime transcationDate = DateTime.Now;
                         Console.WriteLine("Date " +transcationDate);
-
+                        stockData.Numberofshare = stockData.Numberofshare - AmountofShare;
+                        stockData.shareprice = stockData.shareprice - NumberofShare;
+                        Console.WriteLine("Remaning No of Share " + stockData.Numberofshare);
+                        Console.WriteLine("Remaning Share Price " + stockData.shareprice);
+                        string updatePortfolioData = JsonConvert.SerializeObject(jsonAccountHolder);
+                        File.WriteAllText(PortfolioPath,updatePortfolioData);
                         List<Buyshareinfo> BuysShares;
                         Buyshareinfo buyShare = new Buyshareinfo();
                         buyShare.userName = UserName;
@@ -230,7 +243,6 @@ namespace ObjectOrientedProgramming.StockMngt
                         buyShare.dateAndTime = transcationDate.ToString();
                         string buysharedata = File.ReadAllText(buysharePath);
                         var buysharejsondata = JsonConvert.DeserializeObject<BuyShareList>(buysharedata);
-
                         if (buysharedata == "")
                         {
                             BuysShares = new List<Buyshareinfo>();
@@ -250,9 +262,12 @@ namespace ObjectOrientedProgramming.StockMngt
 
                         string Buysahrelist = JsonConvert.SerializeObject(BuyList);
                         File.WriteAllText(buysharePath, Buysahrelist);
-
-
+                       
                     }
+                }
+                if (flag == false)
+                {
+                    Console.WriteLine("Please Enter the Proper Stock Name ....");
                 }
 
             }
@@ -263,7 +278,6 @@ namespace ObjectOrientedProgramming.StockMngt
 
         }
 
-
         public void shellShare()
         {
             int serial = 1;
@@ -271,13 +285,10 @@ namespace ObjectOrientedProgramming.StockMngt
             string shellsharepath = @"C:\Users\User\source\repos\ObjectOrientedProgramming\ObjectOrientedProgramming\StockMngt\JsonFiles\BuyShares.json";
             string sellsharedata = File.ReadAllText(shellsharepath);
             var shellsharejsondata = JsonConvert.DeserializeObject<BuyShareList>(sellsharedata);
-
             var table = new ConsoleTable("seq", "StockName", "NumberofShare", "SharePrice","Transcation Date");
-
-
             foreach (var checkuser in shellsharejsondata.Buysahres)
             {
-                if (checkuser.userName.Contains(UserName))
+                if (checkuser.userName.Contains(UserName) && checkuser.shareprice!=0)
                 {
                     table.AddRow(serial,checkuser.StockName, checkuser.numberofshare, checkuser.shareprice, checkuser.dateAndTime);
                     serial++;
@@ -286,11 +297,98 @@ namespace ObjectOrientedProgramming.StockMngt
             }
             table.Write();
             Console.WriteLine();
-
             if (flag==false)
             {
-                Console.WriteLine("No any Transcation Done");
+                Console.WriteLine("You Have No shares to Sell, frist By and Sell");
             }
         }
+        /// <summary>
+        ///     Stock Report Of The User
+        /// </summary>
+        public void PrintReport()
+        {
+            try
+            {
+                float totalshare = 0;
+                float totalprice = 0;
+                int serial = 1;
+                bool flag = false;
+                string shellsharepath = @"C:\Users\User\source\repos\ObjectOrientedProgramming\ObjectOrientedProgramming\StockMngt\JsonFiles\BuyShares.json";
+                string sellsharedata = File.ReadAllText(shellsharepath);
+                var shellsharejsondata = JsonConvert.DeserializeObject<BuyShareList>(sellsharedata);
+
+                 
+
+                var table = new ConsoleTable("seq", "StockName", "NumberofShare", "SharePrice", "Transcation Date");
+
+
+                foreach (var checkuser in shellsharejsondata.Buysahres)
+                {
+                    if (checkuser.userName.Contains(UserName) && checkuser.shareprice!=0)
+                    {
+                        table.AddRow(serial, checkuser.StockName, checkuser.numberofshare, checkuser.shareprice, checkuser.dateAndTime);
+                        serial++;
+                        totalshare = totalshare + checkuser.numberofshare;
+                        totalprice = totalprice + checkuser.shareprice;
+                        flag = true;
+                    }
+                }
+                table.AddRow("Total","", totalshare, totalprice,"");
+                table.Write();
+                Console.WriteLine();
+                if (flag == false)
+                {
+                    Console.WriteLine("No Record Found");
+                }
+               
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        /// <summary>
+        /// Method For Count the Total value of the Stock
+        /// </summary>
+        public void TotalAmount()
+        {
+
+            try
+            {
+                float totalshare = 0;
+                float totalprice = 0;
+                int serial = 1;
+                bool flag = false;
+                string shellsharepath = @"C:\Users\User\source\repos\ObjectOrientedProgramming\ObjectOrientedProgramming\StockMngt\JsonFiles\BuyShares.json";
+                string sellsharedata = File.ReadAllText(shellsharepath);
+                var shellsharejsondata = JsonConvert.DeserializeObject<BuyShareList>(sellsharedata);
+                foreach (var checkuser in shellsharejsondata.Buysahres)
+                {
+                    if (checkuser.userName.Contains(UserName) && checkuser.shareprice != 0)
+                    {
+                       
+                        serial++;
+                        totalshare = totalshare + checkuser.numberofshare;
+                        totalprice = totalprice + checkuser.shareprice;
+                        flag = true;
+                    }
+                }
+               
+                Console.WriteLine("Total Amount You have\t" +"Rs. "+totalprice);
+                if (flag == false)
+                {
+                    Console.WriteLine("No Record Found");
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+
     }
 }
