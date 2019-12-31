@@ -1,1 +1,34 @@
-{"TotalStocks":[{"StockName":"Tatqa","Numberofshare":1500,"shareprice":1500},{"StockName":"Wipro","Numberofshare":8000,"shareprice":15000},{"StockName":"Tech Mahindra","Numberofshare":9000,"shareprice":75000},{"StockName":"Jio","Numberofshare":8000,"shareprice":6000},{"StockName":"Infosys","Numberofshare":9000,"shareprice":5000},{"StockName":"Tata","Numberofshare":15000,"shareprice":0},{"StockName":"Tech Mahindra","Numberofshare":48000,"shareprice":0},{"StockName":"CMC ","Numberofshare":15000,"shareprice":6000},{"StockName":"Tata","Numberofshare":1250,"shareprice":4850}]}
+{
+  "TotalStocks": [
+    {
+      "StockName": "Wipro",
+      "Numberofshare": 8000,
+      "shareprice": 15000
+    },
+    {
+      "StockName": "Tech Mahindra",
+      "Numberofshare": 9000,
+      "shareprice": 75000
+    },
+    {
+      "StockName": "Jio",
+      "Numberofshare": 8000,
+      "shareprice": 6000
+    },
+    {
+      "StockName": "Infosys",
+      "Numberofshare": 9000,
+      "shareprice": 5000
+    },
+    {
+      "StockName": "Tata",
+      "Numberofshare": 15000,
+      "shareprice": 0
+    },
+    {
+      "StockName": "CMC ",
+      "Numberofshare": 15000,
+      "shareprice": 6000
+    }
+   ]
+}

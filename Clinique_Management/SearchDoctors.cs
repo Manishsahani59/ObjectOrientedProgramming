@@ -154,29 +154,12 @@ namespace ObjectOrientedProgramming.Clinique_Management
                                 break;
                             Console.WriteLine("Enter the  proper value ");
                         }while(!flag);
-                        string FullPath = @"C:\Users\User\source\repos\ObjectOrientedProgramming\ObjectOrientedProgramming\Clinique_Management\JsonFileofDoctors\NewAppoitmentWithDoctors.json";
-                        string patientAppointment = File.ReadAllText(FullPath);
-                        var appointmnetList = JsonConvert.DeserializeObject<PatientAppointmentList>(patientAppointment);
-                        List<PatientAppointment> patientAppointments;
-                        PatientAppointment Appointment;
-                        if (patientAppointment == "")
-                        {
-                            patientAppointments = new List<PatientAppointment>();
-                            Appointment = PatientUtiltiy.AddPatientAppointment();
-                            patientAppointments.Add(Appointment);
-                        }
-                        else
-                        {
-                            patientAppointments = appointmnetList.Appointment;
-                            Appointment = PatientUtiltiy.AddPatientAppointment();
-                            patientAppointments.Add(Appointment);
-                        }
-                        PatientAppointmentList AppointmentwithDocotrs = new PatientAppointmentList()
-                        {
-                            Appointment= patientAppointments
-                        };
-                        string AppointMentdata=JsonConvert.SerializeObject(AppointmentwithDocotrs);
-                        File.WriteAllText(FullPath, AppointMentdata);
+
+
+                        PatientUtiltiy.AddPatientAppointment();
+
+
+
                     } while (input.Equals('y') || input.Equals('Y'));
 
 
@@ -213,8 +196,5 @@ namespace ObjectOrientedProgramming.Clinique_Management
             }
             
         }
-
     }
-
-
 }

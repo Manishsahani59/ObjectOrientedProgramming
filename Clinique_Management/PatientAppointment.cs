@@ -14,6 +14,7 @@ namespace ObjectOrientedProgramming.Clinique_Management.JsonFileofDoctors
         public string PatientName { get; set; }
         public string patientAge { get; set; }
         public string PatientMobileNumber { get; set; }
+        public string Date { get; set; }
        
     }
 }
