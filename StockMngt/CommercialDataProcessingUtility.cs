@@ -229,9 +229,8 @@ namespace ObjectOrientedProgramming.StockMngt
                         DateTime transcationDate = DateTime.Now;
                         Console.WriteLine("Date " +transcationDate);
                         stockData.Numberofshare = stockData.Numberofshare - AmountofShare;
-                        stockData.shareprice = stockData.shareprice - NumberofShare;
-                        Console.WriteLine("Remaning No of Share " + stockData.Numberofshare);
-                        Console.WriteLine("Remaning Share Price " + stockData.shareprice);
+                        Console.WriteLine("Remaning Amout of Share " + stockData.Numberofshare);
+                      
                         string updatePortfolioData = JsonConvert.SerializeObject(jsonAccountHolder);
                         File.WriteAllText(PortfolioPath,updatePortfolioData);
                         List<Buyshareinfo> BuysShares;
@@ -253,8 +252,6 @@ namespace ObjectOrientedProgramming.StockMngt
                             BuysShares = buysharejsondata.Buysahres;
                             BuysShares.Add(buyShare);
                         }
-
-
                         BuyShareList BuyList = new BuyShareList()
                         {
                             Buysahres = BuysShares
@@ -262,7 +259,6 @@ namespace ObjectOrientedProgramming.StockMngt
 
                         string Buysahrelist = JsonConvert.SerializeObject(BuyList);
                         File.WriteAllText(buysharePath, Buysahrelist);
-                       
                     }
                 }
                 if (flag == false)
@@ -297,10 +293,42 @@ namespace ObjectOrientedProgramming.StockMngt
             }
             table.Write();
             Console.WriteLine();
-            if (flag==false)
+            if (flag == false)
             {
                 Console.WriteLine("You Have No shares to Sell, frist By and Sell");
             }
+            else
+            {
+              
+                char input;
+                Console.WriteLine("Do You Want to Sell the Share Y/N");
+                do
+                {
+                    flag = char.TryParse(Console.ReadLine(), out input);
+                    if (flag)
+                    break;
+                    Console.WriteLine("Enter the Proper Input");
+                } while (!flag);
+
+                if (input.Equals('Y') || input.Equals('y'))
+                {
+                    Console.WriteLine("Select The Stock From Which You Want to Sell The Sahre");
+                    string Choice = Console.ReadLine();
+                    var table1 = new ConsoleTable("seq", "StockName", "NumberofShare", "SharePrice");
+                    foreach (var seletchoicData in shellsharejsondata.Buysahres)
+                    {
+                        if (seletchoicData.StockName.Contains(Choice))
+                        {
+                            table1.AddRow(serial,seletchoicData.StockName,seletchoicData.shareprice, seletchoicData.shareprice);
+                        }
+                       
+                    }
+                    table1.Write();
+                    Console.WriteLine();
+                }
+               
+            }
+
         }
         /// <summary>
         ///     Stock Report Of The User
@@ -316,12 +344,8 @@ namespace ObjectOrientedProgramming.StockMngt
                 string shellsharepath = @"C:\Users\User\source\repos\ObjectOrientedProgramming\ObjectOrientedProgramming\StockMngt\JsonFiles\BuyShares.json";
                 string sellsharedata = File.ReadAllText(shellsharepath);
                 var shellsharejsondata = JsonConvert.DeserializeObject<BuyShareList>(sellsharedata);
-
-                 
-
+             
                 var table = new ConsoleTable("seq", "StockName", "NumberofShare", "SharePrice", "Transcation Date");
-
-
                 foreach (var checkuser in shellsharejsondata.Buysahres)
                 {
                     if (checkuser.userName.Contains(UserName) && checkuser.shareprice!=0)
